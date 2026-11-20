@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan — Raka &amp; Nadya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#f4f7f4',
+              100: '#e3ebe4',
+              200: '#c8d7ca',
+              500: '#5f7d64',
+              700: '#3f5743',
+              800: '#2d3f30',
+              900: '#1f2c21',
+            },
+            cream: '#fbf9f5',
+            gold: {
+              400: '#d4af37',
+              500: '#b89228',
+              600: '#99761c',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-cream text-sage-900 font-sans antialiased selection:bg-sage-200 selection:text-sage-900">
+
+  <!-- COVER / SAMPUL UNDANGAN -->
+  <div id="coverOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-sage-900 text-cream px-6 text-center transition-all duration-700">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    <div class="relative z-10 max-w-md w-full space-y-6">
+      <p class="uppercase tracking-[0.3em] text-xs text-gold-400">The Wedding Of</p>
+      <h1 id="coverCoupleNames" class="font-serif text-5xl sm:text-6xl font-semibold text-white">Raka &amp; Nadya</h1>
+      <p id="coverDateText" class="text-sm text-sage-200 tracking-widest">Sabtu, 19 Desember 2026</p>
+
+      <div class="pt-4 pb-2">
+        <div class="inline-block rounded-2xl border border-gold-400/40 bg-sage-800/70 px-6 py-4 backdrop-blur-sm">
+          <p class="text-xs text-sage-200 mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+          <p id="guestNameDisplay" class="font-serif text-2xl font-semibold text-gold-400">Tamu Undangan</p>
+        </div>
+      </div>
+
+      <button id="openInvitationBtn" class="animate-float inline-flex items-center gap-2 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-medium text-sm px-7 py-3.5 shadow-lg shadow-black/25 transition cursor-pointer">
+        <svg xmlns="
