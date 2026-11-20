@@ -20,18 +20,18 @@
               500: '#5f7d64',
               700: '#3f5743',
               800: '#2d3f30',
-              900: '#1f2c21',
+              900: '#1f2c21'
             },
             cream: '#fbf9f5',
             gold: {
               400: '#d4af37',
               500: '#b89228',
-              600: '#99761c',
+              600: '#99761c'
             }
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
           }
         }
       }
@@ -52,22 +52,346 @@
     }
   </style>
 </head>
-<body class="bg-cream text-sage-900 font-sans antialiased selection:bg-sage-200 selection:text-sage-900">
+<body class="bg-cream text-sage-900 font-sans antialiased">
 
-  <!-- COVER / SAMPUL UNDANGAN -->
+  <!-- SAMPUL UNDANGAN -->
   <div id="coverOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-sage-900 text-cream px-6 text-center transition-all duration-700">
-    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:20px_20px]"></div>
     <div class="relative z-10 max-w-md w-full space-y-6">
       <p class="uppercase tracking-[0.3em] text-xs text-gold-400">The Wedding Of</p>
-      <h1 id="coverCoupleNames" class="font-serif text-5xl sm:text-6xl font-semibold text-white">Raka &amp; Nadya</h1>
+      <h1 id="coverCoupleNames" class="font-serif text-5xl font-semibold text-white">Raka &amp; Nadya</h1>
       <p id="coverDateText" class="text-sm text-sage-200 tracking-widest">Sabtu, 19 Desember 2026</p>
-
       <div class="pt-4 pb-2">
-        <div class="inline-block rounded-2xl border border-gold-400/40 bg-sage-800/70 px-6 py-4 backdrop-blur-sm">
+        <div class="inline-block rounded-2xl border border-gold-400/40 bg-sage-800/70 px-6 py-4">
           <p class="text-xs text-sage-200 mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
           <p id="guestNameDisplay" class="font-serif text-2xl font-semibold text-gold-400">Tamu Undangan</p>
         </div>
       </div>
+      <button id="openInvitationBtn" type="button" class="animate-float inline-flex items-center gap-2 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-medium text-sm px-7 py-3.5 shadow-lg cursor-pointer">
+        Buka Undangan
+      </button>
+    </div>
+  </div>
 
-      <button id="openInvitationBtn" class="animate-float inline-flex items-center gap-2 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-medium text-sm px-7 py-3.5 shadow-lg shadow-black/25 transition cursor-pointer">
-        <svg xmlns="
+  <!-- TOMBOL MUSIK -->
+  <button id="musicToggleBtn" type="button" title="Musik Latar" class="fixed bottom-5 right-5 z-40 hidden h-12 w-12 items-center justify-center rounded-full bg-sage-800 text-gold-400 shadow-lg border border-gold-400/40 cursor-pointer">
+    Musik
+  </button>
+
+  <main class="max-w-2xl mx-auto px-4 sm:px-6 pb-20">
+    <!-- HERO & COUNTDOWN -->
+    <section class="pt-14 pb-10 text-center space-y-4">
+      <p class="uppercase tracking-[0.28em] text-xs font-semibold text-gold-600">We Are Getting Married</p>
+      <h2 id="heroCoupleNames" class="font-serif text-5xl font-bold text-sage-800">Raka &amp; Nadya</h2>
+      <p class="text-sm text-sage-700 max-w-md mx-auto">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara pernikahan putra-putri kami:</p>
+      <div class="grid grid-cols-4 gap-2 max-w-md mx-auto pt-3">
+        <div class="glass-card rounded-2xl py-3"><span id="cdDays" class="block font-serif text-2xl font-bold">00</span><span class="text-[11px] text-sage-500">Hari</span></div>
+        <div class="glass-card rounded-2xl py-3"><span id="cdHours" class="block font-serif text-2xl font-bold">00</span><span class="text-[11px] text-sage-500">Jam</span></div>
+        <div class="glass-card rounded-2xl py-3"><span id="cdMinutes" class="block font-serif text-2xl font-bold">00</span><span class="text-[11px] text-sage-500">Menit</span></div>
+        <div class="glass-card rounded-2xl py-3"><span id="cdSeconds" class="block font-serif text-2xl font-bold text-gold-600">00</span><span class="text-[11px] text-sage-500">Detik</span></div>
+      </div>
+      <div class="pt-2">
+        <button id="saveCalendarBtn" type="button" class="rounded-full border border-sage-500/40 bg-white text-sage-800 text-xs font-semibold px-5 py-2.5 shadow-sm cursor-pointer">
+          Simpan ke Google Kalender
+        </button>
+      </div>
+    </section>
+
+    <!-- MEMPELAI -->
+    <section class="grid sm:grid-cols-2 gap-4 mb-10">
+      <div class="glass-card rounded-3xl p-6 text-center space-y-1">
+        <h4 class="font-serif text-2xl font-bold text-sage-800">Raka Pratama, S.T.</h4>
+        <p class="text-xs text-sage-500">Putra Pertama Bpk. Hendra Wijaya &amp; Ibu Siti Aminah</p>
+      </div>
+      <div class="glass-card rounded-3xl p-6 text-center space-y-1">
+        <h4 class="font-serif text-2xl font-bold text-sage-800">Nadya Putri Rahmawati, S.E.</h4>
+        <p class="text-xs text-sage-500">Putri Kedua Bpk. Ahmad Fauzi &amp; Ibu Dewi Lestari</p>
+      </div>
+    </section>
+
+    <!-- ACARA & LOKASI -->
+    <section class="space-y-4 mb-10">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="glass-card rounded-3xl p-6 text-center space-y-2">
+          <span class="inline-block rounded-full bg-sage-100 text-sage-800 text-xs font-semibold px-3 py-1">Akad Nikah</span>
+          <p class="font-serif text-xl font-bold">Sabtu, 19 Desember 2026</p>
+          <p class="text-sm font-semibold text-gold-600">08.00 – 10.00 WIB</p>
+          <p class="text-xs text-sage-600">Masjid Agung Al-Ikhlas, Pekalongan</p>
+        </div>
+        <div class="glass-card rounded-3xl p-6 text-center space-y-2">
+          <span class="inline-block rounded-full bg-gold-400/20 text-gold-600 text-xs font-semibold px-3 py-1">Resepsi</span>
+          <p class="font-serif text-xl font-bold">Sabtu, 19 Desember 2026</p>
+          <p class="text-sm font-semibold text-gold-600">11.00 – 14.00 WIB</p>
+          <p class="text-xs text-sage-600">Gedung Serbaguna Kencana, Pekalongan</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <a id="mapsLinkBtn" href="https://maps.google.com/?q=Pekalongan" target="_blank" rel="noopener noreferrer" class="inline-block rounded-full bg-sage-800 text-white text-xs font-semibold px-6 py-3">
+          Buka Lokasi di Google Maps
+        </a>
+      </div>
+    </section>
+
+    <!-- AMPLOP DIGITAL -->
+    <section class="glass-card rounded-3xl p-6 text-center space-y-4 mb-10">
+      <h3 class="font-serif text-2xl font-bold text-sage-800">Amplop Digital</h3>
+      <div class="grid sm:grid-cols-2 gap-3 text-left">
+        <div class="rounded-2xl border border-sage-200 bg-white p-4 space-y-1">
+          <p class="text-xs font-bold text-sage-500">BANK BCA</p>
+          <p class="font-mono text-base font-bold">1234567890</p>
+          <p class="text-xs text-sage-600">a.n. Raka Pratama</p>
+          <button type="button" onclick="copyText('1234567890', this)" class="mt-1 rounded-lg bg-sage-100 text-xs font-semibold px-3 py-1 cursor-pointer">Salin Rekening</button>
+        </div>
+        <div class="rounded-2xl border border-sage-200 bg-white p-4 space-y-1">
+          <p class="text-xs font-bold text-sage-500">BANK MANDIRI</p>
+          <p class="font-mono text-base font-bold">0987654321</p>
+          <p class="text-xs text-sage-600">a.n. Nadya Putri Rahmawati</p>
+          <button type="button" onclick="copyText('0987654321', this)" class="mt-1 rounded-lg bg-sage-100 text-xs font-semibold px-3 py-1 cursor-pointer">Salin Rekening</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & UCAPAN TAMU -->
+    <section class="glass-card rounded-3xl p-6 shadow-sm space-y-5 mb-10">
+      <div class="text-center">
+        <h3 class="font-serif text-3xl font-bold text-sage-800">RSVP &amp; Ucapan Tamu</h3>
+        <p class="text-xs text-sage-600 mt-1">Konfirmasi kehadiran &amp; kirim doa restu</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-center">
+        <div class="rounded-2xl bg-sage-100 p-3">
+          <span id="statHadir" class="block font-serif text-2xl font-bold">0</span>
+          <span class="text-xs text-sage-600">Hadir</span>
+        </div>
+        <div class="rounded-2xl bg-amber-50 p-3">
+          <span id="statTidakHadir" class="block font-serif text-2xl font-bold text-amber-800">0</span>
+          <span class="text-xs text-amber-700">Tidak Hadir</span>
+        </div>
+      </div>
+
+      <form id="rsvpForm" class="space-y-3">
+        <input id="inputName" type="text" required placeholder="Nama Lengkap" class="w-full rounded-xl border border-sage-200 bg-white px-4 py-2.5 text-sm" />
+        <div class="grid grid-cols-2 gap-3">
+          <select id="inputStatus" class="rounded-xl border border-sage-200 bg-white px-3 py-2.5 text-sm">
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <select id="inputCount" class="rounded-xl border border-sage-200 bg-white px-3 py-2.5 text-sm">
+            <option value="1 Orang">1 Orang</option>
+            <option value="2 Orang">2 Orang</option>
+            <option value="Keluarga">Keluarga</option>
+          </select>
+        </div>
+        <textarea id="inputMessage" rows="3" required placeholder="Tuliskan ucapan &amp; doa restu..." class="w-full rounded-xl border border-sage-200 bg-white px-4 py-2.5 text-sm"></textarea>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <button type="submit" id="submitRsvpBtn" class="flex-1 rounded-xl bg-sage-800 text-white text-sm font-semibold py-3 cursor-pointer">Kirim Ucapan &amp; RSVP</button>
+          <button type="button" id="sendWaBtn" class="rounded-xl bg-emerald-600 text-white text-sm font-semibold py-3 px-4 cursor-pointer">Kirim via WhatsApp</button>
+        </div>
+        <p id="formFeedback" class="text-xs text-center font-medium hidden"></p>
+      </form>
+
+      <div class="pt-3 border-t border-sage-200 space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold uppercase text-sage-700">Ucapan Tamu</span>
+          <button type="button" id="refreshWishesBtn" class="text-xs text-gold-600 underline cursor-pointer">Muat Ulang</button>
+        </div>
+        <div id="wishesList" class="space-y-2 max-h-72 overflow-y-auto"></div>
+      </div>
+    </section>
+
+    <!-- GENERATOR LINK TAMU -->
+    <section id="linkGeneratorBox" class="hidden glass-card rounded-3xl p-5 space-y-3 mb-8 border-2 border-gold-400">
+      <h4 class="font-serif text-lg font-bold">Generator Link Undangan Tamu</h4>
+      <div class="flex gap-2">
+        <input id="genGuestInput" type="text" placeholder="Nama Tamu..." class="flex-1 rounded-xl border border-sage-200 bg-white px-3 py-2 text-sm" />
+        <button type="button" id="generateLinkBtn" class="rounded-xl bg-gold-500 text-white text-xs font-semibold px-4 py-2 cursor-pointer">Buat</button>
+      </div>
+      <div id="generatedResultBox" class="hidden space-y-2">
+        <input id="generatedUrlOutput" type="text" readonly class="w-full rounded-lg border bg-sage-50 px-3 py-2 text-xs font-mono" />
+        <div class="flex gap-2">
+          <button type="button" id="copyGeneratedUrlBtn" class="rounded-lg bg-sage-800 text-white text-xs px-3 py-2 cursor-pointer">Salin Link</button>
+          <a id="shareWaGuestBtn" href="#" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-emerald-600 text-white text-xs px-3 py-2">Kirim ke WA Tamu</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center text-xs text-sage-500 space-y-2">
+      <p class="font-serif text-lg font-semibold text-sage-800">Raka &amp; Nadya</p>
+      <button type="button" id="toggleAdminBtn" class="text-[11px] underline cursor-pointer">Buat Link Undangan Tamu</button>
+    </footer>
+  </main>
+
+  <script>
+    const WEDDING_CONFIG = {
+      coupleNames: "Raka & Nadya",
+      eventDateISO: "2026-12-19T08:00:00+07:00",
+      eventEndISO: "2026-12-19T14:00:00+07:00",
+      eventLocation: "Masjid Agung Al-Ikhlas & Gedung Serbaguna Kencana, Pekalongan",
+      mapsUrl: "https://maps.google.com/?q=Pekalongan",
+      whatsappNumber: "6281234567890",
+      googleScriptUrl: "https://script.google.com/macros/s/AKfycbxTMh2hz5wE-6TyLSE8VyfycH-Tf0VDw5FpM5D0Uyqqakq-9pwc6BD87C9ctHGMqKaWEg/exec"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get("to");
+    if (guestParam) {
+      document.getElementById("guestNameDisplay").textContent = guestParam.trim();
+      document.getElementById("inputName").value = guestParam.trim();
+    }
+    if (urlParams.get("admin") === "1") {
+      document.getElementById("linkGeneratorBox").classList.remove("hidden");
+    }
+    document.getElementById("mapsLinkBtn").href = WEDDING_CONFIG.mapsUrl;
+
+    let audioCtx = null;
+    let isPlayingMusic = false;
+    let melodyInterval = null;
+
+    function toggleMusic(force) {
+      const btn = document.getElementById("musicToggleBtn");
+      isPlayingMusic = typeof force === "boolean" ? force : !isPlayingMusic;
+      btn.classList.remove("hidden");
+      btn.classList.add("flex");
+      if (isPlayingMusic) {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+        const notes = [261.63, 329.63, 392.00, 493.88, 440.00, 349.23, 392.00, 329.63];
+        let step = 0;
+        const play = () => {
+          if (!isPlayingMusic) return;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.frequency.setValueAtTime(notes[step++ % notes.length], audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 0.3);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.8);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 1.9);
+        };
+        play();
+        melodyInterval = setInterval(play, 1600);
+      } else {
+        clearInterval(melodyInterval);
+      }
+    }
+
+    document.getElementById("openInvitationBtn").onclick = () => {
+      document.getElementById("coverOverlay").classList.add("hidden");
+      toggleMusic(true);
+    };
+    document.getElementById("musicToggleBtn").onclick = () => toggleMusic();
+
+    const targetTime = new Date(WEDDING_CONFIG.eventDateISO).getTime();
+    setInterval(() => {
+      const d = Math.max(0, targetTime - Date.now());
+      document.getElementById("cdDays").textContent = String(Math.floor(d / 86400000)).padStart(2, "0");
+      document.getElementById("cdHours").textContent = String(Math.floor((d / 3600000) % 24)).padStart(2, "0");
+      document.getElementById("cdMinutes").textContent = String(Math.floor((d / 60000) % 60)).padStart(2, "0");
+      document.getElementById("cdSeconds").textContent = String(Math.floor((d / 1000) % 60)).padStart(2, "0");
+    }, 1000);
+
+    document.getElementById("saveCalendarBtn").onclick = () => {
+      const s = WEDDING_CONFIG.eventDateISO.replace(/[-:]/g, "").replace("+0700", "");
+      const e = WEDDING_CONFIG.eventEndISO.replace(/[-:]/g, "").replace("+0700", "");
+      const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Pernikahan " + WEDDING_CONFIG.coupleNames)}&dates=${s}/${e}&location=${encodeURIComponent(WEDDING_CONFIG.eventLocation)}`;
+      window.open(calUrl, "_blank", "noopener,noreferrer");
+    };
+
+    function copyText(txt, btn) {
+      navigator.clipboard.writeText(txt);
+      const old = btn.textContent;
+      btn.textContent = "Tersalin!";
+      setTimeout(() => { btn.textContent = old; }, 1500);
+    }
+
+    const KEY = "wedding_rsvp_v1";
+    const esc = s => String(s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
+
+    function renderWishes(items) {
+      document.getElementById("statHadir").textContent = items.filter(i => i.status === "Hadir").length;
+      document.getElementById("statTidakHadir").textContent = items.filter(i => i.status !== "Hadir").length;
+      document.getElementById("wishesList").innerHTML = items.length
+        ? items.map(i => `
+          <div class="rounded-xl border border-sage-200 bg-white p-3 space-y-1">
+            <div class="flex justify-between"><b class="text-xs">${esc(i.name)}</b><span class="text-[10px] px-2 py-0.5 rounded-full bg-sage-100">${esc(i.status)} (${esc(i.count)})</span></div>
+            <p class="text-xs text-sage-700">${esc(i.message)}</p>
+          </div>`).join("")
+        : `<p class="text-xs text-center text-sage-400 py-3">Belum ada ucapan.</p>`;
+    }
+
+    async function loadWishes() {
+      const local = JSON.parse(localStorage.getItem(KEY) || "[]");
+      if (!WEDDING_CONFIG.googleScriptUrl) {
+        return renderWishes(local);
+      }
+      try {
+        const res = await fetch(WEDDING_CONFIG.googleScriptUrl);
+        const json = await res.json();
+        if (json.status === "success") {
+          return renderWishes(json.data);
+        }
+      } catch (e) {}
+      renderWishes(local);
+    }
+
+    document.getElementById("rsvpForm").onsubmit = async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById("inputName").value.trim(),
+        status: document.getElementById("inputStatus").value,
+        count: document.getElementById("inputCount").value,
+        message: document.getElementById("inputMessage").value.trim()
+      };
+      const local = JSON.parse(localStorage.getItem(KEY) || "[]");
+      local.unshift(payload);
+      localStorage.setItem(KEY, JSON.stringify(local));
+      if (WEDDING_CONFIG.googleScriptUrl) {
+        await fetch(WEDDING_CONFIG.googleScriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(payload)
+        });
+      }
+      document.getElementById("formFeedback").textContent = "Terima kasih, RSVP & ucapan tersimpan!";
+      document.getElementById("formFeedback").className = "text-xs text-center text-emerald-700 block";
+      document.getElementById("inputMessage").value = "";
+      setTimeout(loadWishes, 600);
+    };
+
+    document.getElementById("sendWaBtn").onclick = () => {
+      const nama = document.getElementById("inputName").value || "Tamu";
+      const status = document.getElementById("inputStatus").value;
+      const jumlah = document.getElementById("inputCount").value;
+      const pesan = document.getElementById("inputMessage").value;
+      const txt = `Halo ${WEDDING_CONFIG.coupleNames}, saya *${nama}* konfirmasi *${status}* (${jumlah}).\nUcapan: "${pesan}"`;
+      window.open(`https://wa.me/${WEDDING_CONFIG.whatsappNumber}?text=${encodeURIComponent(txt)}`, "_blank", "noopener,noreferrer");
+    };
+
+    document.getElementById("refreshWishesBtn").onclick = loadWishes;
+    loadWishes();
+
+    document.getElementById("toggleAdminBtn").onclick = () => {
+      document.getElementById("linkGeneratorBox").classList.toggle("hidden");
+    };
+
+    document.getElementById("generateLinkBtn").onclick = () => {
+      const g = document.getElementById("genGuestInput").value.trim();
+      if (!g) return;
+      const url = `${location.origin}${location.pathname}?to=${encodeURIComponent(g)}`;
+      document.getElementById("generatedUrlOutput").value = url;
+      document.getElementById("generatedResultBox").classList.remove("hidden");
+      const msg = `Kepada Yth. *${g}*,\nKami mengundang Anda ke pernikahan *${WEDDING_CONFIG.coupleNames}*:\n${url}`;
+      document.getElementById("shareWaGuestBtn").href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    };
+
+    document.getElementById("copyGeneratedUrlBtn").onclick = () => {
+      copyText(document.getElementById("generatedUrlOutput").value, document.getElementById("copyGeneratedUrlBtn"));
+    };
+  </script>
+</body>
+</html>
